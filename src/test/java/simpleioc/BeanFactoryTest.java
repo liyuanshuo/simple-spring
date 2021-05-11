@@ -1,6 +1,8 @@
 package simpleioc;
 
 import org.junit.jupiter.api.Test;
+import simpleioc.factory.AutowireCapableBeanFactory;
+import simpleioc.factory.BeanFactory;
 
 /**
  * Here is the class description
@@ -13,10 +15,11 @@ class BeanFactoryTest {
     @Test
     public void factoryTest() {
         // 1. 初始化BeanFactory
-        BeanFactory beanFactory = new BeanFactory();
+        BeanFactory beanFactory = new AutowireCapableBeanFactory();
 
         // 2. 注入Bean
-        BeanDefinition definition = new BeanDefinition(new HelloWordService());
+        BeanDefinition definition = new BeanDefinition();
+        definition.setBeanClassName("simpleioc.HelloWordService");
         beanFactory.registerBeanDefinition("helloWord", definition);
 
         // 3. 获取Bean

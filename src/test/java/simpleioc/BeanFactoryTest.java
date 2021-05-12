@@ -1,10 +1,11 @@
 package simpleioc;
 
 import org.junit.jupiter.api.Test;
-import simpleioc.factory.AutowireCapableBeanFactory;
-import simpleioc.factory.BeanFactory;
-import simpleioc.io.ResourceLoader;
-import simpleioc.xml.XmlBeanDefinitionReader;
+import simpleioc.beans.BeanDefinition;
+import simpleioc.beans.factory.AutowireCapableBeanFactory;
+import simpleioc.beans.factory.BeanFactory;
+import simpleioc.beans.io.ResourceLoader;
+import simpleioc.beans.xml.XmlBeanDefinitionReader;
 
 import java.util.Map;
 

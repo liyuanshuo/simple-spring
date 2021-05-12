@@ -1,4 +1,4 @@
-package simpleioc;
+package simpleioc.beans;
 
 import lombok.Data;
 

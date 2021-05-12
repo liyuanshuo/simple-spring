@@ -1,4 +1,4 @@
-package simpleioc.io;
+package simpleioc.beans.io;
 
 import java.net.URL;
 

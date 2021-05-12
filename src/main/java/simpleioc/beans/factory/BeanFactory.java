@@ -1,6 +1,6 @@
-package simpleioc.factory;
+package simpleioc.beans.factory;
 
-import simpleioc.BeanDefinition;
+import simpleioc.beans.BeanDefinition;
 
 /**
  * Here is the class description
@@ -16,6 +16,7 @@ public interface BeanFactory {
      *
      * @param name BeanName
      * @return Bean
+     * @throws Exception Exception
      */
     Object getBean(String name) throws Exception;
 

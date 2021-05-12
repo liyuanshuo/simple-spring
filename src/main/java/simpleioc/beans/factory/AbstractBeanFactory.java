@@ -1,6 +1,6 @@
-package simpleioc.factory;
+package simpleioc.beans.factory;
 
-import simpleioc.BeanDefinition;
+import simpleioc.beans.BeanDefinition;
 
 import java.util.HashSet;
 import java.util.Map;

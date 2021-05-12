@@ -1,9 +1,9 @@
-package simpleioc.xml;
+package simpleioc.beans.xml;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import simpleioc.BeanDefinition;
-import simpleioc.io.ResourceLoader;
+import simpleioc.beans.BeanDefinition;
+import simpleioc.beans.io.ResourceLoader;
 
 import java.util.Map;
 

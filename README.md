@@ -34,5 +34,5 @@ step1中的bean是初始化好之后再set进去的，实际使用中，希望�
 
 代码检出：`git checkout tag-6-invite-application-context`
 
-
+`BeanFactory`的功能齐全了，但是使用起来有点麻烦。引入熟悉的`ApplicationContext`接口，并在`AbstractApplicationContext`的`refresh()`方法中进行bean的初始化工作。
 

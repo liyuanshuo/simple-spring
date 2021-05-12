@@ -1,14 +1,14 @@
-package simpleioc.xml;
+package simpleioc.beans.xml;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import simpleioc.AbstractBeanDefinitionReader;
-import simpleioc.BeanDefinition;
-import simpleioc.BeanReference;
-import simpleioc.PropertyValue;
-import simpleioc.io.ResourceLoader;
+import simpleioc.beans.AbstractBeanDefinitionReader;
+import simpleioc.beans.BeanDefinition;
+import simpleioc.beans.BeanReference;
+import simpleioc.beans.PropertyValue;
+import simpleioc.beans.io.ResourceLoader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

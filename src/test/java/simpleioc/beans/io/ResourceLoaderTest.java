@@ -1,6 +1,5 @@
-package simpleioc.io;
+package simpleioc.beans.io;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

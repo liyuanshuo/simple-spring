@@ -1,8 +1,8 @@
-package simpleioc.factory;
+package simpleioc.beans.factory;
 
-import simpleioc.BeanDefinition;
-import simpleioc.BeanReference;
-import simpleioc.PropertyValue;
+import simpleioc.beans.BeanDefinition;
+import simpleioc.beans.BeanReference;
+import simpleioc.beans.PropertyValue;
 
 import java.lang.reflect.Field;
 

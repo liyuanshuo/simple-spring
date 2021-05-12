@@ -1,7 +1,7 @@
-package simpleioc;
+package simpleioc.beans;
 
 import lombok.Data;
-import simpleioc.io.ResourceLoader;
+import simpleioc.beans.io.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;

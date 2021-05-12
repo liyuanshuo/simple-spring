@@ -1,4 +1,4 @@
-package simpleioc;
+package simpleioc.beans;
 
 /**
  * Here is the class description

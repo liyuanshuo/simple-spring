@@ -6,12 +6,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import simpleioc.AbstractBeanDefinitionReader;
 import simpleioc.BeanDefinition;
+import simpleioc.BeanReference;
 import simpleioc.PropertyValue;
 import simpleioc.io.ResourceLoader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.InputStream;
+import java.util.Objects;
 
 /**
  * Here is the class description
@@ -75,7 +77,16 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
                 Element propertyElement = (Element) node;
                 String name = propertyElement.getAttribute("name");
                 String value = propertyElement.getAttribute("value");
-                definition.getPropertyValues().addPropertyValue(new PropertyValue(name, value));
+                if (Objects.nonNull(value) && value.length() > 0) {
+                    definition.getPropertyValues().addPropertyValue(new PropertyValue(name, value));
+                } else {
+                    String ref = propertyElement.getAttribute("ref");
+                    if (Objects.isNull(ref) || ref.length() == 0) {
+                        throw new IllegalArgumentException("Configuration problem: <property> element for property " + name + " must specify a ref or a value");
+                    }
+                    BeanReference reference = new BeanReference(ref);
+                    definition.getPropertyValues().addPropertyValue(new PropertyValue(name, reference));
+                }
             }
         }
     }

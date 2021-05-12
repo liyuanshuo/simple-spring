@@ -17,13 +17,22 @@ public interface BeanFactory {
      * @param name BeanName
      * @return Bean
      */
-    Object getBean(String name);
+    Object getBean(String name) throws Exception;
 
     /**
      * Bean的注册
      *
      * @param name       BeadName
      * @param definition BeanDefinition
+     * @throws Exception 异常
      */
     void registerBeanDefinition(String name, BeanDefinition definition) throws Exception;
+
+
+    /**
+     * 预创建Bean
+     *
+     * @throws Exception 异常
+     */
+    void preInstantiateSingletons() throws Exception;
 }

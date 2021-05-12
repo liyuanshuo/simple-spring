@@ -2,7 +2,9 @@ package simpleioc.factory;
 
 import simpleioc.BeanDefinition;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -16,16 +18,32 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 
     private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 
+    private final HashSet<String> beanDefinitionNames = new HashSet<>();
+
     @Override
-    public Object getBean(String name) {
-        return beanDefinitionMap.get(name).getBean();
+    public Object getBean(String name) throws Exception {
+        BeanDefinition definition = beanDefinitionMap.get(name);
+        if (Objects.isNull(definition)) {
+            throw new IllegalArgumentException("No bean named " + name + " is defined");
+        }
+        Object bean = definition.getBean();
+        if (Objects.isNull(bean)) {
+            bean = doCreatBean(definition);
+        }
+        return bean;
     }
 
     @Override
-    public void registerBeanDefinition(String name, BeanDefinition definition) throws Exception {
-        Object bean = doCreatBean(definition);
-        definition.setBean(bean);
+    public void registerBeanDefinition(String name, BeanDefinition definition) {
         beanDefinitionMap.put(name, definition);
+        beanDefinitionNames.add(name);
+    }
+
+    @Override
+    public void preInstantiateSingletons() throws Exception {
+        for (String name : beanDefinitionNames) {
+            getBean(name);
+        }
     }
 
     /**

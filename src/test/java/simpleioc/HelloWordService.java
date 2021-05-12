@@ -14,6 +14,8 @@ public class HelloWordService {
 
     private String text;
 
+    private OutputService outputService;
+
     public void helloWord() {
         System.out.println("Hello Simple Spring!");
     }

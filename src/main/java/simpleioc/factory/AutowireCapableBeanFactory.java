@@ -1,6 +1,7 @@
 package simpleioc.factory;
 
 import simpleioc.BeanDefinition;
+import simpleioc.BeanReference;
 import simpleioc.PropertyValue;
 
 import java.lang.reflect.Field;
@@ -16,6 +17,7 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
     @Override
     protected Object doCreatBean(BeanDefinition definition) throws Exception {
         Object bean = creatBeanInstance(definition);
+        definition.setBean(bean);
         applyPropertyValues(bean, definition);
         return bean;
     }
@@ -24,13 +26,18 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
         return definition.getBeanClass().newInstance();
     }
 
-    protected void applyPropertyValues(Object bean, BeanDefinition definition) throws NoSuchFieldException, IllegalAccessException {
+    protected void applyPropertyValues(Object bean, BeanDefinition definition) throws Exception {
         for (PropertyValue propertyValue : definition.getPropertyValues().getPropertyValueSet()) {
 
             /* 通过Field注入，Spring内部实际采用的是Set方法注入*/
             Field declaredField = bean.getClass().getDeclaredField(propertyValue.getName());
             declaredField.setAccessible(true);
-            declaredField.set(bean, propertyValue.getValue());
+            Object value = propertyValue.getValue();
+            if (value instanceof BeanReference) {
+                BeanReference reference = (BeanReference) value;
+                value = getBean(reference.getName());
+            }
+            declaredField.set(bean, value);
 
             /*
 

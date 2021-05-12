@@ -17,7 +17,7 @@ import java.util.Map;
  */
 class BeanFactoryTest {
     @Test
-    public void factoryTest() throws Exception {
+    public void factoryTestLazy() throws Exception {
         // 1. 读取配置
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new ResourceLoader());
         reader.loadBeanDefinitions("simpleioc.xml");
@@ -33,5 +33,32 @@ class BeanFactoryTest {
         helloWordService.helloWord();
         System.out.println(helloWordService.getText());
 
+        OutputService outputService = (OutputService) beanFactory.getBean("outputService");
+        outputService.getHelloWordService().helloWord();
+
+    }
+
+    @Test
+    public void preInstanceTest() throws Exception {
+        // 1. 读取配置
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new ResourceLoader());
+        reader.loadBeanDefinitions("simpleioc.xml");
+
+        // 2. 初始化BeanFactory并注册Bean
+        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        for (Map.Entry<String, BeanDefinition> definitionEntry : reader.getRegistry().entrySet()) {
+            beanFactory.registerBeanDefinition(definitionEntry.getKey(), definitionEntry.getValue());
+        }
+
+        // 3. 初始化Bean
+        beanFactory.preInstantiateSingletons();
+
+        // 4. 获取Bean
+        HelloWordService helloWordService = (HelloWordService) beanFactory.getBean("helloWordService");
+        helloWordService.helloWord();
+        System.out.println(helloWordService.getText());
+
+        OutputService outputService = (OutputService) beanFactory.getBean("outputService");
+        outputService.getHelloWordService().helloWord();
     }
 }

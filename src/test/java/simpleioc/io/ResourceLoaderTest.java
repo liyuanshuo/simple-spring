@@ -1,6 +1,7 @@
 package simpleioc.io;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ class ResourceLoaderTest {
         ResourceLoader loader = new ResourceLoader();
         Resource resource = loader.getResource("simpleioc.xml");
         InputStream stream = resource.getInputStream();
-        Assert.assertNotNull(stream);
+        Assertions.assertNotNull(stream);
     }
 
 }

@@ -1,6 +1,6 @@
 package simpleioc.xml;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import simpleioc.BeanDefinition;
 import simpleioc.io.ResourceLoader;
@@ -21,7 +21,7 @@ class XmlBeanDefinitionReaderTest {
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new ResourceLoader());
         reader.loadBeanDefinitions("simpleioc.xml");
         Map<String, BeanDefinition> registry = reader.getRegistry();
-        Assert.assertTrue(registry.size() > 0);
+        Assertions.assertTrue(registry.size() > 0);
     }
 
 }

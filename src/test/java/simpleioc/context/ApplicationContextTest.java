@@ -1,7 +1,7 @@
 package simpleioc.context;
 
 import org.junit.jupiter.api.Test;
-import simpleioc.HelloWordService;
+import simpleioc.HelloWordServiceImpl;
 
 /**
  * Here is the class description
@@ -15,7 +15,7 @@ class ApplicationContextTest {
     @Test
     public void applicationTest() throws Exception {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("simpleioc.xml");
-        HelloWordService helloWordService = (HelloWordService) applicationContext.getBean("helloWordService");
+        HelloWordServiceImpl helloWordService = (HelloWordServiceImpl) applicationContext.getBean("helloWordService");
         helloWordService.helloWord();
         System.out.println(helloWordService.getText());
     }

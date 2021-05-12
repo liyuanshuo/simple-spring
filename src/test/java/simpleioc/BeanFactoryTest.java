@@ -30,7 +30,7 @@ class BeanFactoryTest {
         }
 
         // 3.获取Bean
-        HelloWordService helloWordService = (HelloWordService) beanFactory.getBean("helloWordService");
+        HelloWordServiceImpl helloWordService = (HelloWordServiceImpl) beanFactory.getBean("helloWordService");
         helloWordService.helloWord();
         System.out.println(helloWordService.getText());
 
@@ -55,7 +55,7 @@ class BeanFactoryTest {
         beanFactory.preInstantiateSingletons();
 
         // 4. 获取Bean
-        HelloWordService helloWordService = (HelloWordService) beanFactory.getBean("helloWordService");
+        HelloWordServiceImpl helloWordService = (HelloWordServiceImpl) beanFactory.getBean("helloWordService");
         helloWordService.helloWord();
         System.out.println(helloWordService.getText());
 

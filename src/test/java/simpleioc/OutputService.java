@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Assertions;
 @Data
 public class OutputService {
 
-    private HelloWordService helloWordService;
+    private HelloWordServiceImpl helloWordService;
 
     public void output(String text) {
         Assertions.assertNotNull(helloWordService);

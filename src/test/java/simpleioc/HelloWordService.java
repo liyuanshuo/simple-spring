@@ -1,22 +1,15 @@
 package simpleioc;
 
-import lombok.Data;
-
 /**
  * Here is the class description
  *
  * @author : liyuanshuo
  * @version : 1.0.0
- * @date : 2021/5/11 19:32
+ * @date : 2021/5/12 21:26
  */
-@Data
-public class HelloWordService {
-
-    private String text;
-
-    private OutputService outputService;
-
-    public void helloWord() {
-        System.out.println("Hello Simple Spring!");
-    }
+public interface HelloWordService {
+    /**
+     * 单纯的打印接口
+     */
+    void helloWord();
 }

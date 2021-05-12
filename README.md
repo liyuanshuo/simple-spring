@@ -2,6 +2,8 @@
 
 spring的基本原理
 
+# 第一部分 IOC容器部分
+
 ## 1. tag-1-最基本的容器
 
 代码检出： `git checkout tag-1-container-register-and-get`
@@ -35,4 +37,18 @@ step1中的bean是初始化好之后再set进去的，实际使用中，希望�
 代码检出：`git checkout tag-6-invite-application-context`
 
 `BeanFactory`的功能齐全了，但是使用起来有点麻烦。引入熟悉的`ApplicationContext`接口，并在`AbstractApplicationContext`的`refresh()`方法中进行bean的初始化工作。
+
+# 第二部分 AOP部分
+
+AOP分为配置(Pointcut，Advice)，织入(Weave)两部分工作，当然还有一部分是将AOP整合到整个容器的生命周期中。、
+
+## 7. tag-7-使用JDK动态代理实现AOP织入
+
+代码检出：`git checkout tag-7-method-interceptor-by-jdk-dynamic-proxy`
+
+织入（weave）相对简单, Spring AOP的织入点是`AOPProxy`，它包含一个方法`Object getProxy()`来获取代理后的对象
+
+在Spring AOP中，两个很重要的角色`MethodInterceptor`和`MethodInvocation`（这两个角色是AOP联盟标准），它们对应AOP中的两个基本角色`Advice`和`Joinpoint`。`Advice`
+定义了在切点指定的逻辑，而`Joinpoint`则代表切点
+
 

@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean name="helloWordService" class="simpleioc.HelloWordService">
+    <bean name="helloWordService" class="simpleioc.HelloWordServiceImpl">
         <property name="text" value="Hello Simple Spring This is a Text!"></property>
         <property name="outputService" ref="outputService"></property>
     </bean>

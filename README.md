@@ -10,7 +10,11 @@ IoC最基本的角色有两个：容器(`BeanFactory`)和Bean本身。这里使�
 
 ## 2. tag-2-将bean创建放入工厂
 
-代码检出： `git checkout `
+代码检出： `git checkout tag-2-abstract-beanfactory-and-do-bean-initilizing`
 
 step1中的bean是初始化好之后再set进去的，实际使用中，希望容器来管理bean的创建。于是将bean的初始化放入BeanFactory中。为了保证扩展性，使用Extract Interface的方法，将`BeanFactory`
 替换成接口，而使用`AbstractBeanFactory`和`AutowireCapableBeanFactory`作为其实现。"AutowireCapable"的意思是“可自动装配的”，为后面注入属性做准备。
+
+## 3. tag-3-inject-bean-with-property
+
+代码检出： `git checkout `

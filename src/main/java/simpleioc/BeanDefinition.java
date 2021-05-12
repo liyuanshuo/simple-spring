@@ -15,8 +15,12 @@ import lombok.NoArgsConstructor;
 public class BeanDefinition {
 
     private Object bean;
+
     private Class<?> beanClass;
+
     private String beanClassName;
+
+    private PropertyValues propertyValues;
 
     public void setBeanClassName(String beanClassName) {
         this.beanClassName = beanClassName;

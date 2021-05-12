@@ -25,5 +25,5 @@ public interface BeanFactory {
      * @param name       BeadName
      * @param definition BeanDefinition
      */
-    void registerBeanDefinition(String name, BeanDefinition definition);
+    void registerBeanDefinition(String name, BeanDefinition definition) throws Exception;
 }

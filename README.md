@@ -17,4 +17,7 @@ step1中的bean是初始化好之后再set进去的，实际使用中，希望�
 
 ## 3. tag-3-inject-bean-with-property
 
-代码检出： `git checkout `
+代码检出： `git checkout tag-3-inject-bean-with-property`
+
+想要为bean注入属性。选择将属性注入信息保存成`PropertyValue`对象，并且保存到`BeanDefinition`
+中。这样在初始化bean的时候，可以根据PropertyValue来进行bean属性的注入。Spring本身使用了setter来进行注入，这里使用Field的形式来注入。

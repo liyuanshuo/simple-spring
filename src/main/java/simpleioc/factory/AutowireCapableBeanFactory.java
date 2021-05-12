@@ -26,9 +26,29 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
 
     protected void applyPropertyValues(Object bean, BeanDefinition definition) throws NoSuchFieldException, IllegalAccessException {
         for (PropertyValue propertyValue : definition.getPropertyValues().getPropertyValueSet()) {
+
+            /* 通过Field注入，Spring内部实际采用的是Set方法注入*/
             Field declaredField = bean.getClass().getDeclaredField(propertyValue.getName());
             declaredField.setAccessible(true);
             declaredField.set(bean, propertyValue.getValue());
+
+            /*
+
+              通过Set方法注入
+
+             try {
+             BeanInfo beanInfo = Introspector.getBeanInfo(bean.getClass());
+             PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+             for (PropertyDescriptor descriptor : propertyDescriptors) {
+             Object convertObject = TypeConverter.convertObject(descriptor.getPropertyType(), propertyValue.getValue());
+             descriptor.getWriteMethod().invoke(bean, convertObject);
+             }
+             } catch (Exception e) {
+             e.printStackTrace();
+             }
+             */
         }
+
+
     }
 }

@@ -3,6 +3,10 @@ package simpleioc;
 import org.junit.jupiter.api.Test;
 import simpleioc.factory.AutowireCapableBeanFactory;
 import simpleioc.factory.BeanFactory;
+import simpleioc.io.ResourceLoader;
+import simpleioc.xml.XmlBeanDefinitionReader;
+
+import java.util.Map;
 
 /**
  * Here is the class description
@@ -14,24 +18,20 @@ import simpleioc.factory.BeanFactory;
 class BeanFactoryTest {
     @Test
     public void factoryTest() throws Exception {
-        // 1. 初始化BeanFactory
+        // 1. 读取配置
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new ResourceLoader());
+        reader.loadBeanDefinitions("simpleioc.xml");
+
+        // 2. 初始化BeanFactory并注册Bean
         BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        for (Map.Entry<String, BeanDefinition> definitionEntry : reader.getRegistry().entrySet()) {
+            beanFactory.registerBeanDefinition(definitionEntry.getKey(), definitionEntry.getValue());
+        }
 
-        // 2. Bean定义
-        BeanDefinition definition = new BeanDefinition();
-        definition.setBeanClassName("simpleioc.HelloWordService");
+        // 3.获取Bean
+        HelloWordService helloWordService = (HelloWordService) beanFactory.getBean("helloWordService");
+        helloWordService.helloWord();
+        System.out.println(helloWordService.getText());
 
-        // 3.设置属性
-        PropertyValues propertyValues = new PropertyValues();
-        propertyValues.addPropertyValue(new PropertyValue("text", "Hello Simple Spring"));
-        definition.setPropertyValues(propertyValues);
-
-        // 4.生成Bean
-        beanFactory.registerBeanDefinition("helloWordService", definition);
-
-        // 5. 获取Bean
-        HelloWordService service = (HelloWordService) beanFactory.getBean("helloWordService");
-        service.helloWord();
-        System.out.println(service.getText());
     }
 }

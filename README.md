@@ -21,3 +21,18 @@ step1中的bean是初始化好之后再set进去的，实际使用中，希望�
 
 想要为bean注入属性。选择将属性注入信息保存成`PropertyValue`对象，并且保存到`BeanDefinition`
 中。这样在初始化bean的时候，可以根据PropertyValue来进行bean属性的注入。Spring本身使用了setter来进行注入，这里使用Field的形式来注入。
+
+## 4. tag-4-读取xml配置来初始化bean
+
+代码检出： `git checkout tag-4-config-beanfactory-with-xml`
+
+## 5. tag-5-为Bean注入Bean
+
+代码检出 `git checkout tag-5-inject-bean-to-bean`
+
+## 6. tag-6-ApplicationContext
+
+代码检出：`git checkout tag-6-invite-application-context`
+
+
+
